@@ -13,28 +13,16 @@ $bot = resolve('botman');
 //
 //
 
-use BotMan\Drivers\Telegram\Extensions\Keyboard;
-use BotMan\Drivers\Telegram\Extensions\KeyboardButton;
+
+$bot->hears('location', function(BotMan $bot) {
 
 
-$keyboard = Keyboard::create()->type( Keyboard::TYPE_KEYBOARD )
-    ->oneTimeKeyboard(true)
-    ->addRow(
-        KeyboardButton::create("Да")->callbackData('first_inline'),
-        KeyboardButton::create("Нет")->callbackData('second_inline')
-    )
-    ->toArray();
-
-
-
-
-
-
-$bot->hears('/start', function(BotMan $bot) use ($keyboard) {
-    $bot->reply('starting', $keyboard);
+    $msg = \BotMan\BotMan\Messages\Outgoing\OutgoingMessage::create('loc')
+        ->withAttachment(new \BotMan\BotMan\Messages\Attachments\Location(61,61, [
+            'custom_payload' => true
+        ]));
+    $bot->reply($msg);
 });
-
-
 
 
 
