@@ -1,9 +1,13 @@
 <?php
 use App\Http\Controllers\BotManController;
+use \BotMan\BotMan\BotMan;
 
-$botman = resolve('botman');
+/**
+ * @var BotMan $bot
+ */
+$bot = resolve('botman');
 
-$botman->hears('Hi', function ($bot) {
-    $bot->reply('Helloooooooooo!');
+$bot->hears('Hi', function (BotMan $bot) {
+    $bot->reply(get_class($bot));
 });
-$botman->hears('Start conversation', BotManController::class.'@startConversation');
+$bot->hears('Start conversation', BotManController::class.'@startConversation');
