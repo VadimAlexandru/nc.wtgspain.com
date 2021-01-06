@@ -20,9 +20,7 @@ $keyboard = \BotMan\Drivers\Telegram\Extensions\Keyboard::create()->addRow(
 
 
 
-
-
-
+$bot->types();
 
 
 
