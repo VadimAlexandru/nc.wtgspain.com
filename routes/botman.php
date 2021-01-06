@@ -14,6 +14,23 @@ $bot = resolve('botman');
 //
 
 
+$keyboard = \BotMan\Drivers\Telegram\Extensions\Keyboard::create()->addRow(
+    \BotMan\Drivers\Telegram\Extensions\KeyboardButton::create('test')
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 $bot->hears('payload', function(BotMan $bot) {
