@@ -7,7 +7,34 @@ use \BotMan\BotMan\BotMan;
  */
 $bot = resolve('botman');
 
-$bot->hears('Hi', function (BotMan $bot) {
-    $bot->reply(get_class($bot));
+//$bot->hears('Hi', function (BotMan $bot) {
+//    $bot->reply(get_class($bot));
+//});
+//
+//
+
+
+
+
+$bot->hears('payload', function(BotMan $bot) {
+    $bot->reply(
+        json_encode($bot->getUser()->getInfo())
+    );
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $bot->hears('Start conversation', BotManController::class.'@startConversation');
