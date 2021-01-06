@@ -13,21 +13,21 @@ $bot = resolve('botman');
 //
 //
 
+use BotMan\Drivers\Telegram\Extensions\Keyboard;
+use BotMan\Drivers\Telegram\Extensions\KeyboardButton;
 
-$keyboard = \BotMan\Drivers\Telegram\Extensions\Keyboard::create()->addRow(
-    \BotMan\Drivers\Telegram\Extensions\KeyboardButton::create('test')
-);
+
+Keyboard::create()->type( Keyboard::TYPE_KEYBOARD )
+    ->oneTimeKeyboard(true)
+    ->addRow(
+        KeyboardButton::create("Да")->callbackData('first_inline'),
+        KeyboardButton::create("Нет")->callbackData('second_inline')
+    )
+    ->toArray();
 
 
 
 $bot->types();
-
-sleep(3);
-
-
-
-
-
 
 
 
