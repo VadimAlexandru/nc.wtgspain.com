@@ -18,7 +18,7 @@ $bot = resolve('botman');
 
 $bot->hears('payload', function(BotMan $bot) {
     $bot->reply(
-        json_encode($bot->getUser()->getInfo())
+        $bot->getMessage()->getSender()
     );
 });
 
